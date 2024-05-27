@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p class="h4">Log in or register to view available books and leave reviews</p>
+    <p class="h3"><a asp-controller="FictionalBooks" asp-action="Index">📖 Fictional books</a></p>
+    <p class="h3"><a asp-controller="NonFictionalBooks" asp-action="Index">⚙️ Non-Fictional books</a></p>
+    <p class="h3"><a asp-controller="Reviews" asp-action="Index">⭐ Reviews</a></p>
+</div>

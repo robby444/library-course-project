@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Library.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reviews</h1>
+
+
+@foreach (var item in Model)
+{
+    <div class="border rounded m-3 p-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-column">
+                <h3>@Html.DisplayFor(modelItem => item.Book.Title)
+                    @if (User.IsInRole("Admin")) {
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    }
+                </h3>
+                <p>@Html.DisplayFor(modelItem => item.Text)</p>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <h3>Rating: @Html.DisplayFor(modelItem => item.Rating)</h3>
+                <div>
+                @{
+                    int rating = item.Rating ?? 0;
+                }
+                @for (int i = 1; i <= 5; i++)
+                {
+                    if (i <= rating)
+                    {
+                            <i>⭐</i>
+                    }
+                    else
+                    {
+                            <i>✖️</i>
+                    }
+                }
+                </div>
+                <p>@Html.DisplayFor(modelItem => item.IdentityUser.Email)</p>
+            </div>
+        </div>
+    </div>
+}
